@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Anatomia do Documento</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <!-- página inicial de faltas -->
+        <header id="header_pag_inicial">
+            <button onclick="abreNav()" style="width: 6%; background: none; border: none; outline: none; box-shadow: none;">
+                <img src="Imagens/menu.png" style=" width: 60px; height: 60px;">
+            </button>
+            <div style="width: 25%; display: flex; justify-content: space-around; align-items: center;">
+                <img src="Imagens/octogono.png" style="width: 60px; height: 60px;" class="logo">
+                <p id="titulo_header">Escola Octógono</p>
+            </div>
+            <div style="width: 7%;"></div>
+        </header>
+        <section id="pag_inicial">
+            <div class="div_filtro_pag_inicial">
+                <select id="professor_selecionado_pag_inicial">
+                    <option hidden disabled selected value="">Professor</option>
+                    <option value="João Silva">João Silva</option>
+                    <option value="Maria Souza">Maria Souza</option>
+                    <option value="Lucas Felipe">Lucas Felipe</option>
+                    <option value="Luis Lima">Luis Lima</option>
+                    <option value="Geraldo Alckmin">Geraldo Alckmin</option>
+                    <option value="Neymar JR">Neymar JR</option>
+                    <option value="Joe Biden">Joe Biden</option>
+                </select>
+                <select id="materia_selecionada_pag_inicial">
+                    <option hidden disabled selected value="">Disciplina</option>
+                    <option value="Português">Português</option>
+                    <option value="Matemática">Matemática</option>
+                    <option value="Ed.Física">Educação física</option>
+                    <option value="Artes">Artes</option>
+                    <option value="História">História</option>
+                    <option value="Inglês">Inglês</option>
+                    <option value="Ciências">Ciências</option>
+                    <option value="Geografia">Geografia</option>
+                </select>
+            </div>
+            <div class="div_filtro_pag_inicial2">
+                <select id="turma_selecionada_pag_inicial">
+                    <option hidden disabled selected value="">Turma</option>
+                    <option value="1">1º</option>
+                    <option value="2">2º</option>
+                    <option value="3">3º</option>
+                    <option value="4">4º</option>
+                    <option value="5">5º</option>
+                </select>
+            </div>
+            <button onclick="getAlunos()" id="botao_carrega_alunos_pag_inicial">Carregar turma</button>
+            
+            <section id="campo_turma">
+                <div style="width: 55vw; display: flex; justify-content: space-around; align-items: center;">
+                    <p class="titulo_coluna_alunos">RA</p>
+                    <p class="titulo_coluna_alunos">Aluno</p>
+                    <p class="titulo_coluna_alunos"></p>
+                </div>
+            </section>
+            <button onclick="aplicaFaltas()" class="botao_aplica_faltas">Aplicar faltas</button>
+            <button onclick="reprovaAlunos()" class="botao_aplica_faltas">Reprovar alunos</button>
+        </section>
+        <footer id="footer_pag_inicial"></footer>
+
+        <!-- nav -->
+        <section id="background_nav">
+            <nav id="menu">
+                <button onclick="fechaNav()" style="width: 6%; background: none; border: none; outline: none; box-shadow: none;">
+                    <img src="Imagens/voltar.png" style=" width: 60px; height: 40px; margin-top: 1vh; margin-bottom: 1vh;">
+                </button>
+                <section id="menu_opcoes">
+                    <button class="botaoNav" onclick="abrePagRelatorio()">
+                        <img src="Imagens/relatorio.png" style="width: 60px; height: 60px;">
+                        <p class="texto_botao_menu">Relatórios de faltas</p>
+                    </button>
+                    <button class="botaoNav" onclick="abrePagAjustes()">
+                        <img src="Imagens/ajustes.png" style="width: 60px; height: 60px;">
+                        <p class="texto_botao_menu">Ajustes</p>
+                    </button>
+                </section>
+            </nav>
+        </section>
+
+        <!-- página gerar relatório -->
+        <section id="background_pag_relatorio">
+            <section id="pag_relatorio">
+                <header id="header_pag_relatorio">
+                    <img src="Imagens/octogono.png" id="logo_relatorio">
+                    <p id="titulo_header_relatorio">Relatórios de faltas</p>
+                    <button onclick="fechaPagRelatorio()" style="width: 6%; background: none; border: none; outline: none; box-shadow: none;">
+                        <img src="Imagens/x.png" style="width: 30px; height: 30px;">
+                    </button>
+                </header>
+                <section id="corpo_pag_relatorio">
+                    <div id="filtros">
+                        <div id="campo_busca_aluno">
+                            <div id="form_busca_aluno">
+                                <input id="aluno_buscado" value="" placeholder="Pesquisar aluno">
+                                <button onclick="trazFaltasAluno()" id="submit_buscar_aluno">
+                            </div>
+                        </div>
+                        <div id="separacao_filtro"></div>
+                            <div id="campo_filtros_gerais">
+                                    <div class="filtro_geral">
+                                        <select id="professor_selecionado_pag_relatorio">
+                                            <option hidden disabled selected value="">Professor</option>
+                                            <option value="João Silva">João Silva</option>
+                                            <option value="Maria Souza">Maria Souza</option>
+                                            <option value="Lucas Felipe">Lucas Felipe</option>
+                                            <option value="Luis Lima">Luis Lima</option>
+                                            <option value="Geraldo Alckmin">Geraldo Alckmin</option>
+                                            <option value="Neymar JR">Neymar JR</option>
+                                            <option value="Joe Biden">Joe Biden</option>
+                                        </select>
+                                    </div>
+                                    <button class="botao_gerar_relatorio" onclick="geraRelatorioProfessor()">Gerar relatório professor</button>
+                                    <div class="filtro_geral">
+                                        <select id="turma_selecionada_pag_relatorio">
+                                            <option hidden disabled selected value="">Turma</option>
+                                            <option value="1">1º</option>
+                                            <option value="2">2º</option>
+                                            <option value="3">3º</option>
+                                            <option value="4">4º</option>
+                                            <option value="5">5º</option>
+                                        </select>
+                                    </div>
+                                    <button class="botao_gerar_relatorio" onclick="geraRelatorioTurma()">Gerar relatório turma</button>
+                                    <div class="filtro_geral">
+                                        <select id="materia_selecionada_pag_relatorio">
+                                            <option hidden disabled selected value="">Disciplina</option>
+                                            <option value="port">Português</option>
+                                            <option value="mat">Matemática</option>
+                                            <option value="edf">Educação física</option>
+                                            <option value="art">Artes</option>
+                                            <option value="hist">História</option>
+                                            <option value="ing">Inglês</option>
+                                            <option value="cie">Ciências</option>
+                                            <option value="geo">Geografia</option>
+                                        </select>
+                                    </div>
+                                    <button class="botao_gerar_relatorio" onclick="geraRelatorioMateria()">Gerar relatório matéria</button>
+                            </div>
+                    </div>
+                    <section id="background_relatorio">
+                        <section id="relatorio">
+                            
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+        <!-- página de ajustes -->
+        <section id="background_pag_ajustes">
+            <section id="pag_ajustes">
+                <header id="header_pag_ajustes">
+                    <button onclick="fechaPagAjustes()" id="x_pag_ajustes">
+                        <img src="Imagens/x.png" style="width: 30px; height: 30px;">
+                    </button>
+                </header>
+                <section id="corpo_pag_ajustes">
+                    <p style="width: 40vw; font-size: 30px; height: 5vh; display: flex; justify-content: center; align-items: center; font-family: Kadwa; margin-bottom: -2vh;">Alterar fonte da página<p>
+                    <div class="div_ajustes">
+                        <button onclick="tirarFonteDislexia()" id="botao_fonte_padrao"></button>
+                        <p style="width: 40vw; font-size: 20px; height: 5vh; display: flex; justify-content: flex-start; align-items: center; font-family: Kadwa; margin-left: 1vw;">Fonte padrão</p>
+                    </div>
+                    <div class="div_ajustes">
+                        <button onclick="colocarFonteDislexia()" id="botao_fonte_dislexia"></button>
+                        <p style="width: 40vw; font-size: 20px; height: 5vh; display: flex; justify-content: flex-start; align-items: center; font-family: OpenDyslexic3; margin-left: 1vw;">Fonte recomendada para dislexia</p>
+                    </div>
+                </section>
+                <footer id="footer_pag_ajustes"></footer>
+            </section>
+        </section>
+
+    </body>
+</html>
